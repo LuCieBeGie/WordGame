@@ -43,13 +43,18 @@ function createWord() {
 			fallingEl.innerHTML = letters[random(letters.length - 1)]
 			level.innerHTML = `Level 1`
 		}
-		else if (score >= 50) {
+		else if (score <= 40) {
+			fallingEl.innerHTML = letters[random(letters.length - 1)] +
+				letters[random(letters.length - 1)]
+			level.innerHTML = `Level 2`
+		}
+		else if (score >= 60) {
 			fallingEl.innerHTML = hardWord[random(hardWord.length - 1)]
-			level.innerHTML = `Level 3`
+			level.innerHTML = `Level 4`
 		}
 		else {
 			fallingEl.innerHTML = easyWords[random(easyWords.length - 1)]
-			level.innerHTML = `Level 2`
+			level.innerHTML = `Level 3`
 		}
 
 		fallingEl.style = `
@@ -72,6 +77,7 @@ function moveWord() {
 				audio1.pause()
 				audio1.currentTime = 0
 				txt.removeEventListener('input', check)
+				level.innerHTML = ''
 				words.innerHTML = ''
 				start_block.style.display = 'flex'
 			}
@@ -81,7 +87,7 @@ function moveWord() {
 const h1 = document.createElement('h1')
 function check() {
 	const divs = document.querySelectorAll('.item')
-	let val = this.value
+	let val = this.value.trim().toLowerCase()
 	for (let el of divs) {
 		if (val == el.innerHTML) {
 			h1.innerHTML = ''
