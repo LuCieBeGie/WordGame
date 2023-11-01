@@ -19,16 +19,16 @@ const words=document.querySelector('.words')
 const txt=document.querySelector('.txt')
 start.onclick=function(){
 	start_block.style.display='none'
-	startgame()
+	startGame()
 }
-function startgame() {
+function startGame() {
 	txt.value=''
-	createword()
-	moveword()
+	createWord()
+	moveWord()
 	audio1.play()
 	txt.addEventListener('input', check)
 }
-function createword() {
+function createWord() {
 	s1=setInterval(function(){
 		let div=document.createElement('div')
 		div.innerHTML=barer[random(barer.length-1)]
@@ -42,7 +42,7 @@ function createword() {
 		words.append(div)
 	}, 1000)
 }
-function moveword() {
+function moveWord() {
 	s2=setInterval(function () {
 		const divs=document.querySelectorAll('.item')
 		divs.forEach(el=>{
